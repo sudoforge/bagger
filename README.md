@@ -45,4 +45,4 @@ If `bagger new /path/to/some/folder` is ran and a `baggerignore` file exists, th
 
 Questions? Bugs?
 ================
-    - [Report an Issue](https://github.com/bddenhartog/bagger/issues)
+- [Report an Issue](https://github.com/bddenhartog/bagger/issues)
