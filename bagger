@@ -1,0 +1,33 @@
+#!/bin/bash
+
+NAME=$1
+TARGET=$2
+IGNOREFILE="baggerignore"
+
+echo "bagger:"
+if [[ -z ${NAME} || -z ${TARGET} ]]; then
+  echo "  - missing required option(s)"
+  echo "  - usage:"
+  echo "    $ bagger NAME TARGET"
+  exit 0
+fi
+
+if [[ -n ${NAME} ]]; then
+  ZIPFILE="${NAME}.zip"
+fi
+
+if [[ -n ${ZIPFILE} && -n ${TARGET} ]]; then
+  echo "  - bagging directory: ${TARGET}..."
+  
+  pushd ${TARGET}
+  if [[ -f ${IGNOREFILE} ]]; then
+    zip -rq ${ZIPFILE} ./* -x@${IGNOREFILE}
+  else
+    zip ${ZIPFILE} ./*
+  fi
+  popd
+
+  echo "  done."
+fi
+
+echo && echo
