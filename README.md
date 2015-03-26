@@ -8,16 +8,12 @@ Bagger is a simple script to aid in compressing files via the command line using
 - Automatically ignores files and folders listed in a `baggerignore` file in the target directory, if it exists -- similar to the way a `.gitignore` file works. This allows you to easily and consistently control which files are ignored.
 
 ##Installation
-Clone the repository to your local machine:
-    
-    $ git clone https://github.com/bddenhartog/bagger.git
+This method doesn't clone the repository, which means less clutter for you. Assuming you keep your local bash scripts in `/usr/local/bin`, run the commands:
 
-Create a symlink in a directory in your PATH (e.g. /usr/local/bin/):
-    
-    # you may need to run as root (or use sudo)
-    $ ln -s /path/to/bagger/bagger /usr/local/bin/bagger
+    $ curl -L https://github.com/bddenhartog/bagger/raw/master/bagger > /usr/local/bin/bagger
+    $ chmod +x /usr/local/bin/bagger
 
-That's it!
+You may need to use `sudo` (run as root). Repeat the process to update it if ever needed.
 
 ##Usage
 Bagger is pretty simple.
