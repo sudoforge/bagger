@@ -2,7 +2,7 @@
 
 NAME=$1
 TARGET=$2
-IGNOREFILE="baggerignore"
+IGNOREFILE=".baggerignore"
 
 echo "bagger:"
 if [[ -z ${NAME} || -z ${TARGET} ]]; then
