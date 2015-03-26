@@ -21,9 +21,9 @@ if [[ -n ${ZIPFILE} && -n ${TARGET} ]]; then
   
   pushd ${TARGET}
   if [[ -f ${IGNOREFILE} ]]; then
-    zip -rq ${ZIPFILE} ./* -x@${IGNOREFILE}
+    zip -r ${ZIPFILE} ./* -x@${IGNOREFILE}
   else
-    zip -rq ${ZIPFILE} ./*
+    zip -r ${ZIPFILE} ./*
   fi
   popd
 
