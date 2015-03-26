@@ -20,7 +20,7 @@ Bagger is pretty simple.
     
     $ bagger newfile /path/to/some/folder
 
-The example above will run `zip -rq` (recursive, quiet) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the directory that it compressed.
+The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the directory that it compressed.
 
 If you are _in_ the directory you wish to compress, you can simply type `bagger newfile .` - the period means "my current directory".
 
