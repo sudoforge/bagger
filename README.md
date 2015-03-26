@@ -20,14 +20,14 @@ Bagger is pretty simple.
     
     $ bagger newfile /path/to/some/folder
 
-The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the directory that it compressed.
+The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the target directory.
 
 If you are _in_ the directory you wish to compress, you can simply type `bagger newfile .` - the period means "my current directory".
 
 _Note that bagger automatically adds the `.zip` extension - avoid typing it in when running the command!_
 
 ##baggerignore
-You can create a file, called `baggerignore`, which will work like a `.gitignore` file; it will be fed into the `zip` command, and any files/folders within the `baggerignore` file will be excluded from the new .zip file.
+You can create a file, called `baggerignore`, which will work like a `.gitignore` file; any files/folders within the `baggerignore` file will be excluded from the new .zip file.
 
 __Example baggerignore__
     
@@ -36,14 +36,14 @@ __Example baggerignore__
     *.DS_Store
     somefile.txt
 
-If you run `bagger new /path/to/some/folder` and a `baggerignore` file exists (in the _/path/to/some/folder_ directory), the files and folders listed within `baggerignore` will be excluded from the compressed output (which will be _/path/to/some/folder/new.zip_).
+If you run `bagger new /path/to/some/folder` and a `baggerignore` file exists in the target directory, the files and folders listed within `baggerignore` will be excluded from the compressed folder (which will be _/path/to/some/folder/new.zip_).
 
 ##A note about relativity
-In the command `bagger somefile ~/path/to/folder`, note that `somefile` is the filename of the zipped folder you are creating. One neat thing is that this is relative to the project's directory! For example, if you run:
+In the command `bagger somefile ~/path/to/folder`, note that `somefile` is the filename of the zipped folder you are creating. One neat thing to note is that this is relative to the project's directory! For example, if you run:
 
-`bagger zipped_project/somefile ~/path/to/folder`
+`bagger zipfiles/somefile-v1.0 ~/path/to/folder`
 
-You will end up with: `~/path/to/folder/zipped_project/somefile.zip`. Pretty neat!
+You will end up with: `~/path/to/folder/zipfiles/somefile-v1.0.zip`. Pretty neat! I personally use a directory called "packaged" in my projects that contain all of my `bagger`-fied projects.
 
 Issues?
 =======
