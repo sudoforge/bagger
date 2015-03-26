@@ -5,7 +5,7 @@ Bagger is a simple script to aid in compressing files via the command line using
 
 ##Features
 - Utilizes the `zip` command; does not require anything else
-- Automatically ignores files and folders listed in a `baggerignore` file in the target directory, if it exists -- similar to the way a `.gitignore` file works. This allows you to easily and consistently control which files are ignored.
+- Automatically ignores files and folders listed in a `.baggerignore` file in the target directory, if it exists -- similar to the way a `.gitignore` file works. This allows you to easily and consistently control which files are ignored.
 
 ##Installation
 This method doesn't clone the repository, which means less clutter for you. Assuming you keep your local bash scripts in `/usr/local/bin`, run the commands:
@@ -26,17 +26,17 @@ If you are _in_ the directory you wish to compress, you can simply type `bagger 
 
 _Note that bagger automatically adds the `.zip` extension - avoid typing it in when running the command!_
 
-##baggerignore
-You can create a file, called `baggerignore`, which will work like a `.gitignore` file; any files/folders within the `baggerignore` file will be excluded from the new .zip file.
+##.baggerignore
+You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file.
 
-__Example baggerignore__
+__Example .baggerignore__
     
     private/
     *.zip
     *.DS_Store
     somefile.txt
 
-If you run `bagger new /path/to/some/folder` and a `baggerignore` file exists in the target directory, the files and folders listed within `baggerignore` will be excluded from the compressed folder (which will be _/path/to/some/folder/new.zip_).
+If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists in the target directory, the files and folders listed within `.baggerignore` will be excluded from the compressed folder (which will be _/path/to/some/folder/new.zip_).
 
 ##A note about relativity
 In the command `bagger somefile ~/path/to/folder`, note that `somefile` is the filename of the zipped folder you are creating. One neat thing to note is that this is relative to the project's directory! For example, if you run:
