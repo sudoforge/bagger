@@ -27,17 +27,14 @@ _Note that bagger automatically adds the `.zip` extension - avoid typing it in w
 ##baggerignore
 You can create a file, called `baggerignore`, which will work like a `.gitignore` file; it will be fed into the `zip` command, and any files/folders within the `baggerignore` file will be excluded from the new .zip file.
 
-####Example baggerignore
-Here's a quick example of a baggerignore file:
-
-baggerignore
+__Example baggerignore__
     
-    private/*
+    private/
     *.zip
     *.DS_Store
     somefile.txt
 
-If `bagger new /path/to/some/folder` is ran and a `baggerignore` file exists (in the _/path/to/some/folder_ directory), the files and folders listed within will be excluded from the compressed output (which will be _/path/to/some/folder/new.zip_).
+If you run `bagger new /path/to/some/folder` and a `baggerignore` file exists (in the _/path/to/some/folder_ directory), the files and folders listed within `baggerignore` will be excluded from the compressed output (which will be _/path/to/some/folder/new.zip_).
 
 ##A note about relativity
 In the command `bagger somefile ~/path/to/folder`, note that `somefile` is the filename of the zipped folder you are creating. One neat thing is that this is relative to the project's directory! For example, if you run:
