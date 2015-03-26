@@ -12,18 +12,18 @@ if [[ -z ${NAME} || -z ${TARGET} ]]; then
   exit 0
 fi
 
-if [[ -n ${NAME} ]]; then
-  ZIPFILE="${NAME}.zip"
+if [[ ${NAME} != *".zip" ]]; then
+  NAME="${NAME}.zip"
 fi
 
-if [[ -n ${ZIPFILE} && -n ${TARGET} ]]; then
+if [[ -n ${NAME} && -n ${TARGET} ]]; then
   echo "  - bagging directory: ${TARGET}..."
   
   pushd ${TARGET}
   if [[ -f ${IGNOREFILE} ]]; then
-    zip -r ${ZIPFILE} ./* -x@${IGNOREFILE}
+    zip -r ${NAME} ./* -x@${IGNOREFILE}
   else
-    zip -r ${ZIPFILE} ./*
+    zip -r ${NAME} ./*
   fi
   popd
 

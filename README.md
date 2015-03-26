@@ -4,7 +4,7 @@ bagger
 Bagger is a simple script to aid in compressing files via the command line using `zip`. Bagger was initially created to streamline the compression of chrome application folders, but can easily be ported to _any_ project at all!
 
 ##Features
-- Utilizes the `zip` command; does not require anything else
+- Utilizes the `zip` command; nothing else is required!
 - Automatically ignores files and folders listed in a `.baggerignore` file in the target directory, if it exists -- similar to the way a `.gitignore` file works. This allows you to easily and consistently control which files are ignored.
 
 ##Installation
@@ -20,11 +20,11 @@ Bagger is pretty simple.
     
     $ bagger newfile /path/to/some/folder
 
+_Note that bagger automatically adds the `.zip` extension if you don't include it._
+
 The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the target directory.
 
 If you are _in_ the directory you wish to compress, you can simply type `bagger newfile .` - the period means "my current directory".
-
-_Note that bagger automatically adds the `.zip` extension - avoid typing it in when running the command!_
 
 ##.baggerignore
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file.
