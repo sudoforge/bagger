@@ -23,7 +23,7 @@ if [[ -n ${ZIPFILE} && -n ${TARGET} ]]; then
   if [[ -f ${IGNOREFILE} ]]; then
     zip -rq ${ZIPFILE} ./* -x@${IGNOREFILE}
   else
-    zip ${ZIPFILE} ./*
+    zip -rq ${ZIPFILE} ./*
   fi
   popd
 
