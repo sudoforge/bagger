@@ -40,7 +40,7 @@ If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists i
 
 
 ##Updating
-As mentioned above in _Installing_, you can run the curl command to update bagger. There's also a built-in method for updating!
+As mentioned above in _Installing_, you can run the curl command to update bagger. There's also a built-in method for updating! It will run the `curl` command on the raw file in this repo, and overwrite your current `bagger` executable.
 
 `bagger --update`
 
