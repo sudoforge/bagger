@@ -14,19 +14,20 @@ This method doesn't clone the repository, which means less clutter for you. Assu
     $ curl -L https://github.com/bddenhartog/bagger/raw/master/bagger > /usr/local/bin/bagger
     $ chmod +x /usr/local/bin/bagger
 
-##Updating
+__Updating__
 You can run the commands above to update, but why bother? There's a built-in method for updating! Just type:
 
 `bagger --update`
 
 ##Using Bagger
-Bagger is pretty simple.
+Bagger is pretty simple to use. Here's an example:
     
-    $ bagger newfile /path/to/some/folder
+    $ bagger newfile /path/to/folder
 
-The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compressing it and its contents into a file called `newfile.zip`, which will be automatically placed inside the target directory.
-
-If you are _in_ the directory you wish to compress, you can simply type `bagger newfile .` - the period means "my current directory". 
+Explanation of command:
+- `bagger` fires up the script.
+- `newfile` is the filename you want for your compressed folder. You can add relative paths (relative to the target directory, not your current location) to it, like `somedirectory/newfile`. If you do not end it with the .zip extension (like `newfile.zip`), Bagger will automatically add it.
+- `/path/to/folder` is the path to the folder you want to compress. If you are _in_ the directory you want to compress, you can replace this path with `.` - which means "my current directory".
 
 __Auto-ignoring files with .baggerignore__
 
