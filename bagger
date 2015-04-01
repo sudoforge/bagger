@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -n ${1} && ${1} == '--update' ]]; then
+  curl -L "https://github.com/bddenhartog/bagger/raw/master/bagger" > $(which bagger)
+  exit 0
+fi
+
 NAME=$1
 TARGET=$2
 IGNOREFILE=".baggerignore"
@@ -9,6 +14,9 @@ if [[ -z ${NAME} || -z ${TARGET} ]]; then
   echo "  - missing required option(s)"
   echo "  - usage:"
   echo "    $ bagger NAME TARGET"
+  echo
+  echo "  - to update:"
+  echo "    $ bagger --update"
   exit 0
 fi
 
