@@ -1,8 +1,7 @@
 bagger
 ======
 
-Bagger is a simple script to aid in compressing files via the command line using `zip`. Bagger was initially created to streamline the compression of chrome application folders, but can easily be ported to _any_ project at all!
-
+Bagger is a simple script to aid in compressing files via the command line using `zip`. Bagger was initially created to streamline the compression of chrome application projects, but can easily be ported to _any_ project at all!
 
 ##Features
 - Utilizes the `zip` command; nothing else is required!
@@ -10,15 +9,17 @@ Bagger is a simple script to aid in compressing files via the command line using
 
 
 ##Installation
-This method doesn't clone the repository, which means less clutter for you. Assuming you keep your local bash scripts in `/usr/local/bin`, run the commands:
+This method doesn't clone the repository, which means less clutter for you. Assuming you keep your local bash scripts in `/usr/local/bin`, run the commands (you may need to use `sudo`):
 
     $ curl -L https://github.com/bddenhartog/bagger/raw/master/bagger > /usr/local/bin/bagger
     $ chmod +x /usr/local/bin/bagger
 
-You may need to use `sudo` (run as root). Repeat the process to update it if ever needed.
+##Updating
+You can run the commands above to update, but why bother? There's a built-in method for updating! Just type:
 
+`bagger --update`
 
-##Usage
+##Using Bagger
 Bagger is pretty simple.
     
     $ bagger newfile /path/to/some/folder
@@ -37,13 +38,6 @@ You can create a file, called `.baggerignore`, which will work like a `.gitignor
     somefile.txt
 
 If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists in the target directory, the files and folders listed within `.baggerignore` will be excluded from the compressed folder (which will be _/path/to/some/folder/new.zip_).
-
-
-##Updating
-As mentioned above in _Installing_, you can run the curl command to update bagger. There's also a built-in method for updating! It will run the `curl` command on the raw file in this repo, and overwrite your current `bagger` executable.
-
-`bagger --update`
-
 
 ##Notes
 - The filename can be relative, meaning that `bagger sub-folder/somefile .` will zip your current directory (. means current directory) into a compressed file at `sub-folder/somefile.zip`.
