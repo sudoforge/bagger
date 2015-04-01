@@ -15,6 +15,7 @@ This method doesn't clone the repository, which means less clutter for you. Assu
     $ chmod +x /usr/local/bin/bagger
 
 __Updating__
+
 You can run the commands above to update, but why bother? There's a built-in method for updating! Just type:
 
 `bagger --update`
