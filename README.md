@@ -28,6 +28,7 @@ The example above will run `zip -r` (recursive) on `/path/to/some/folder`, compr
 If you are _in_ the directory you wish to compress, you can simply type `bagger newfile .` - the period means "my current directory". 
 
 __Auto-ignoring files with .baggerignore__
+
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file. For example:
     
     private/
