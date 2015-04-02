@@ -18,13 +18,11 @@ if [[ -z ${NAME} || -z ${TARGET} ]]; then
   echo "  - to update:"
   echo "    $ bagger --update"
   exit 0
-fi
-
-if [[ ${NAME} != *".zip" ]]; then
-  NAME="${NAME}.zip"
-fi
-
-if [[ -n ${NAME} && -n ${TARGET} ]]; then
+else
+  if [[ ${NAME} != *".zip" ]]; then
+    NAME="${NAME}.zip"
+  fi
+  
   echo "  - bagging directory: ${TARGET}..."
   
   pushd ${TARGET}
