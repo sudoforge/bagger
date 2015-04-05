@@ -15,8 +15,7 @@ This method doesn't clone the repository, which means less clutter for you. Assu
     $ chmod +x /usr/local/bin/bagger
 
 ###Updating
-
-You can run the commands above to update, but why bother? There's a built-in method for updating! Just type:
+You can run the commands above to update, but why bother? There's a built-in method for updating!
 
 `bagger --update`
 
@@ -31,7 +30,6 @@ Explanation of command:
 - `/path/to/folder` is the path to the folder you want to compress. If you are _in_ the directory you want to compress, you can replace this path with `.` - which means "my current directory".
 
 ###Auto-ignoring with .baggerignore
-
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file. For example:
     
     private/
