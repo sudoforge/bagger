@@ -30,7 +30,7 @@ Explanation of command:
 - `newfile` is the filename you want for your compressed folder. You can add relative paths (relative to the target directory, not your current location) to it, like `somedirectory/newfile`. If you do not end it with the .zip extension (like `newfile.zip`), Bagger will automatically add it.
 - `/path/to/folder` is the path to the folder you want to compress. If you are _in_ the directory you want to compress, you can replace this path with `.` - which means "my current directory".
 
-__Auto-ignoring files with .baggerignore__
+###Auto-ignoring with .baggerignore
 
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file. For example:
     
@@ -45,6 +45,5 @@ If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists i
 - The filename can be relative, meaning that `bagger sub-folder/somefile .` will zip your current directory (. means current directory) into a compressed file at `sub-folder/somefile.zip`.
 - Bagger will automatically add the `.zip` extension if you don't include it -- which is why it hasn't been included in the examples here.
 
-Issues?
-=======
+###Issues
 - [Report an Issue](https://github.com/bddenhartog/bagger/issues)
