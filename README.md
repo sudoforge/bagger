@@ -1,7 +1,7 @@
 bagger
 ======
 
-Bagger is a simple script to aid in compressing files via the command line using `zip`. Bagger was initially created to streamline the compression of chrome application projects, but can easily be ported to _any_ project at all!
+Bagger is a simple script to aid in compressing files via the command line using `zip`. Bagger was initially created to streamline the compression of chrome application projects (which need to be delivered to the chrome web store in a .zip folder) - but it can easily help streamline any project that requires zip compression.
 
 ###Features
 - Utilizes the `zip` command; nothing else is required!
@@ -34,16 +34,12 @@ __Auto-ignoring files with .baggerignore__
 
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file. For example:
     
-    private/
+    private/*
     *.zip
     *.DS_Store
     somefile.txt
 
-If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists in the target directory, the files and folders listed within `.baggerignore` will be excluded from the compressed folder (which will be _/path/to/some/folder/new.zip_).
-
-###Notes
-- The filename can be relative, meaning that `bagger sub-folder/somefile .` will zip your current directory (. means current directory) into a compressed file at `sub-folder/somefile.zip`.
-- Bagger will automatically add the `.zip` extension if you don't include it -- which is why it hasn't been included in the examples here.
+If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists in the target directory, the files and folders listed within `.baggerignore` will be excluded from the compressed folder. Note the asterisk after the folder's backslash - this is the only sure way to exclude the entire directory!
 
 Issues?
 =======
