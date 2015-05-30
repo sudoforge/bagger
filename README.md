@@ -15,8 +15,7 @@ This method doesn't clone the repository, which means less clutter for you. Assu
     $ chmod +x /usr/local/bin/bagger
 
 ###Updating
-
-You can run the commands above to update, but why bother? There's a built-in method for updating! Just type:
+You can run the commands above to update, but why bother? There's a built-in method for updating!
 
 `bagger --update`
 
@@ -30,8 +29,7 @@ Explanation of command:
 - `newfile` is the filename you want for your compressed folder. You can add relative paths (relative to the target directory, not your current location) to it, like `somedirectory/newfile`. If you do not end it with the .zip extension (like `newfile.zip`), Bagger will automatically add it.
 - `/path/to/folder` is the path to the folder you want to compress. If you are _in_ the directory you want to compress, you can replace this path with `.` - which means "my current directory".
 
-__Auto-ignoring files with .baggerignore__
-
+###Auto-ignoring with .baggerignore
 You can create a file, called `.baggerignore`, which will work like a `.gitignore` file; any files/folders within the `.baggerignore` file will be excluded from the new .zip file. For example:
     
     private/*
@@ -41,6 +39,5 @@ You can create a file, called `.baggerignore`, which will work like a `.gitignor
 
 If you run `bagger new /path/to/some/folder` and a `.baggerignore` file exists in the target directory, the files and folders listed within `.baggerignore` will be excluded from the compressed folder. Note the asterisk after the folder's backslash - this is the only sure way to exclude the entire directory!
 
-Issues?
-=======
+###Issues
 - [Report an Issue](https://github.com/bddenhartog/bagger/issues)
