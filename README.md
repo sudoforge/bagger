@@ -17,7 +17,7 @@ This method doesn't clone the repository, which means less clutter for you. Assu
 ###Updating
 You can run the commands above to update, but why bother? There's a built-in method for updating!
 
-`bagger --update`
+    $ bagger --update
 
 ###Using Bagger
 Bagger is pretty simple to use. Here's an example:
