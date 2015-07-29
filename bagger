@@ -8,21 +8,28 @@ fi
 NAME=$1
 TARGET=$2
 IGNOREFILE=".baggerignore"
+LOC=`which bagger`
 
-echo "bagger:"
 if [[ -z ${NAME} || -z ${TARGET} ]]; then
+  echo "error:"
   echo "  - missing required option(s)"
+  echo
+  bagger --help !
+  exit 0
+elif [[ ${NAME} == "?" || ${NAME} == "--help" ]]; then
+  echo "bagger:"
   echo "  - usage:"
-  echo "    $ bagger NAME TARGET"
+  echo "    ${LOC} NAME TARGET"
   echo
   echo "  - to update:"
-  echo "    $ bagger --update"
+  echo "    ${LOC} --update"
   exit 0
 else
   if [[ ${NAME} != *".zip" ]]; then
     NAME="${NAME}.zip"
   fi
   
+  echo "bagger:"
   echo "  - bagging directory: ${TARGET}..."
   
   pushd ${TARGET}
@@ -35,5 +42,3 @@ else
 
   echo "  done."
 fi
-
-echo && echo
