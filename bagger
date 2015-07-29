@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -n ${1} && ${1} == '--update' ]]; then
-  curl -L "https://github.com/bddenhartog/bagger/raw/master/bagger" > $(which bagger)
+  curl -L "https://github.com/bddenhartog/bagger/raw/master/bagger" > $0
   exit 0
 fi
 

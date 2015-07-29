@@ -14,6 +14,8 @@ This method doesn't clone the repository, which means less clutter for you. Assu
     $ curl -L https://github.com/bddenhartog/bagger/raw/master/bagger > /usr/local/bin/bagger
     $ chmod +x /usr/local/bin/bagger
 
+Change the destination directory if you want to have the script located somewhere else.
+
 ###Updating
 You can run the commands above to update, but why bother? There's a built-in method for updating!
 
