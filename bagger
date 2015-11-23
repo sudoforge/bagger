@@ -1,44 +1,172 @@
-#!/bin/bash
+#!/bin/sh
 
-if [[ -n ${1} && ${1} == '--update' ]]; then
-  curl -L "https://github.com/bddenhartog/bagger/raw/master/bagger" > $0
-  exit 0
-fi
-
-NAME=$1
-TARGET=$2
+###############
+# VARIABLES
+###############
+REMOTE="https://github.com/bddenhartog/bagger/raw/master/bagger"
 IGNOREFILE=".baggerignore"
-LOC=`which bagger`
+IGNORELIST=""
 
-if [[ -z ${NAME} || -z ${TARGET} ]]; then
-  echo "error:"
-  echo "  - missing required option(s)"
-  echo
-  bagger --help !
-  exit 0
-elif [[ ${NAME} == "?" || ${NAME} == "--help" ]]; then
-  echo "bagger:"
-  echo "  - usage:"
-  echo "    ${LOC} NAME TARGET"
-  echo
-  echo "  - to update:"
-  echo "    ${LOC} --update"
-  exit 0
-else
-  if [[ ${NAME} != *".zip" ]]; then
-    NAME="${NAME}.zip"
-  fi
-  
-  echo "bagger:"
-  echo "  - bagging directory: ${TARGET}..."
-  
-  pushd ${TARGET}
-  if [[ -f ${IGNOREFILE} ]]; then
-    zip -r ${NAME} ./* -x@${IGNOREFILE}
-  else
-    zip -r ${NAME} ./*
-  fi
-  popd
+###############
+# FUNCTIONS
+###############
+help()
+{
+    echo "bagger:
+    ${0} {OPTION} DEST TARGET
 
-  echo "  done."
-fi
+    Options:
+    -u | -U | --update:
+        Updates bagger from ${REMOTE}
+
+    -v | -V | --verbose:
+        Prints out files that are added to the compressed directory"
+    exit 0
+}
+
+check_dest ()
+{
+    case ${1} in
+        */*)
+            # returns everything before the final "/" in argument
+            DIR=$(echo ${1} | sed 's/\(.*\)\/\(.*\)/\1/')
+
+            if [ ! -d ${DIR} ]; then
+                mkdir --parents ${DIR}
+            fi
+            ;;
+    esac
+}
+
+update ()
+{
+    echo "Updating...\n"
+    curl -L ${REMOTE} > ${0}
+    echo "\nDone."
+    exit 0
+}
+
+error ()
+{
+    case "${1}" in
+        target)
+            shift
+            echo "The target(s) do not exist:\n"
+
+            for file in "${@}"; do
+                echo "${file}"
+            done
+
+            echo "\nAborting. Run with --help for syntax."
+            ;;
+        dest)
+            check_dest ${2}
+            ;;
+        filetype)
+            echo "Oops! This target doesn't appear to be a file or directory:"
+            echo "  "${2}
+            ;;
+        *)
+            help
+            ;;
+    esac
+}
+
+bag ()
+{
+    if [ -z ${1} ]; then
+        help
+    fi
+
+    COMMAND="zip -r"
+
+    case "${1}" in
+        -l | --loud)
+            shift
+            ;;
+        *)
+            COMMAND=${COMMAND}"q"
+            ;;
+    esac
+
+    # assign DEST to (now-)first argument
+    DEST=${1}
+    shift
+
+    # check for .zip at end of filename
+    # add if it doesn't exist
+    case "${DEST}" in
+    *.zip) ;;
+    *)
+        DEST=${DEST}".zip"
+        ;;
+    esac
+
+    # add destination argument to zip command
+    COMMAND=${COMMAND}" ${DEST} "
+
+    # check for target existence
+    for target in ${@}; do
+        ERRS="" # for errors
+        IGNR="" # used to build the exclusion/ignore list
+
+        if [ ! -e ${target} ]; then
+            echo "noexists: ${target}"
+            ERRS=${ERRS}"${target} "
+        else
+            COMMAND=${COMMAND}"${target} "
+
+            # get full location for the ignore file
+            if [ -f ${target} ]; then
+                IGNOREFILE="${target}/../${IGNOREFILE}"
+            elif [ -d ${target} ]; then
+                #statements
+                IGNOREFILE="${target}/${IGNOREFILE}"
+            else
+                error filetype ${target}
+            fi
+
+            if [ -e ${IGNOREFILE} ]; then
+                while read -r line; do
+                    case "$line" in
+                        */\*)
+                            line=$(echo "${line}" | sed 's/\(.*\)\/\*/\1\/\\\*/')
+                            ;;
+                    esac
+
+                    IGNR="${IGNR} -x \"${target}/${line}\""
+                done < ${IGNOREFILE}
+            fi
+
+            IGNORELIST=${IGNORELIST}"${IGNR}"
+        fi
+
+        if [ "$ERRS" != "" ]; then
+            error target ${ERRS}
+        fi
+    done
+
+    COMMAND=${COMMAND}"${IGNORELIST}"
+
+    check_dest ${DEST}
+    echo "running ${COMMAND}..."
+    ${COMMAND}
+    echo "done."
+}
+
+###############
+# ACTION
+###############
+
+case "${1}" in
+    -u | -U | --update)
+        update
+        ;;
+    -v | --verbose)
+        shift
+        bag --loud ${@}
+        ;;
+    *)
+        bag ${@}
+        ;;
+esac
