@@ -41,7 +41,7 @@ check_dest ()
 update ()
 {
     echo "Updating...\n"
-    curl -L ${REMOTE} > ${0}
+    wget ${REMOTE} > ${0}
     echo "\nDone."
     exit 0
 }
