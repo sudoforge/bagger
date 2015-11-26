@@ -13,14 +13,18 @@ IGNORELIST=""
 help()
 {
     echo "bagger:
-    ${0} {OPTION} DEST TARGET
+    ${0} {-v | -u | -h} DESTINATION TARGET {ADDITIONAL TARGETS}
 
     Options:
+    -v | -V | --verbose:
+        Prints out files that are added to the compressed directory
+
     -u | -U | --update:
         Updates bagger from ${REMOTE}
 
-    -v | -V | --verbose:
-        Prints out files that are added to the compressed directory"
+    -h | -H | --help:
+        Displays this help text"
+
     exit 0
 }
 
@@ -162,9 +166,12 @@ case "${1}" in
     -u | -U | --update)
         update
         ;;
-    -v | --verbose)
+    -v | -V | --verbose)
         shift
         bag --loud ${@}
+        ;;
+    -h | -H | --help)
+        help
         ;;
     *)
         bag ${@}
