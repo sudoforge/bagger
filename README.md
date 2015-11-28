@@ -26,7 +26,7 @@ bagger {-v | -u | -h} DESTINATION TARGET {ADDITIONAL TARGETS}
         Prints out files that are added to the compressed directory"
 
     -u | -U | --update:
-        Updates bagger from ${REMOTE}
+        Updates bagger from this repository
 
     -h | -H | --help:
         Displays this help text
