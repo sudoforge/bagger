@@ -122,7 +122,7 @@ bag ()
 
             # get full location for the ignore file
             if [ -f ${target} ]; then
-                IGNOREFILE="${target}/../${IGNOREFILE}"
+                IGNOREFILE=$(dirname ${target})"/${IGNOREFILE}"
             elif [ -d ${target} ]; then
                 #statements
                 IGNOREFILE="${target}/${IGNOREFILE}"
