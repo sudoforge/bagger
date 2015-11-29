@@ -23,7 +23,7 @@ Change the destination directory if you want to have the script located somewher
 bagger {-v | -u | -h} DESTINATION TARGET {ADDITIONAL TARGETS}
 
     -v | -V | --verbose:
-        Prints out files that are added to the compressed directory"
+        Prints out files that are added to the compressed directory
 
     -u | -U | --update:
         Updates bagger from this repository
