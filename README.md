@@ -2,6 +2,10 @@
 
 Bagger is a wrapper around the `zip` utility. It streamlines the process of compression with a simpler command structure, as well as the ability to automatically ignore files and directories by reading a file named `.baggerignore` in your targets' directory, if it exists.
 
+## NO LONGER MAINTAINED
+
+The author recommends using [`git-archive`](https://git-scm.com/docs/git-archive) together with the [`export-ignore` attribute](https://git-scm.com/docs/git-archive#git-archive-export-ignore)
+
 **History**  
 Bagger was initially created to bypass the tedious process of ignoring directories and files when compressing Chrome Applications (Google requires projects to be uploaded to its Web Store in a `.zip` file). Upon realizing its utility as a general-purpose tool, it was released publicly.
 
